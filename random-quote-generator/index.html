@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Random Quote Generator - Get inspired with motivational and thought-provoking quotes. Built for CodeAlpha App Development Internship.">
+  <title>Random Quote Generator | CodeAlpha</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-wrapper">
+    <!-- Header Section -->
+    <header class="app-header">
+      <h1 class="app-title">Random Quote Generator</h1>
+      <p class="app-subtitle">Get inspired with a new quote</p>
+    </header>
+
+    <!-- Main Quote Card -->
+    <main class="quote-container" role="main">
+      <article class="quote-card" aria-live="polite" aria-atomic="true">
+        <!-- Quote Decorative Icon -->
+        <div class="quote-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"/>
+          </svg>
+        </div>
+
+        <!-- Dynamic Quote Content -->
+        <div id="quote-content" class="quote-content">
+          <blockquote class="quote-text-wrapper">
+            <p id="quote-text" class="quote-text">Loading inspirational quote...</p>
+          </blockquote>
+          <div class="author-wrapper">
+            <span class="author-dash" aria-hidden="true">—</span>
+            <cite id="quote-author" class="quote-author">Loading author...</cite>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="quote-actions">
+          <button type="button" id="copy-btn" class="btn btn-secondary" aria-label="Copy quote to clipboard" title="Copy quote">
+            <span class="btn-icon" aria-hidden="true" id="copy-icon">
+              <!-- Copy Icon SVG -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </span>
+            <span id="copy-btn-text" class="btn-text">Copy Quote</span>
+          </button>
+
+          <button type="button" id="new-quote-btn" class="btn btn-primary" aria-label="Generate a new random quote" title="Get a new quote">
+            <span class="btn-icon" aria-hidden="true" id="new-quote-icon">
+              <!-- Dice/Refresh Icon SVG -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+              </svg>
+            </span>
+            <span class="btn-text">New Quote</span>
+          </button>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="app-footer">
+      <p>CodeAlpha App Development Internship Project</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

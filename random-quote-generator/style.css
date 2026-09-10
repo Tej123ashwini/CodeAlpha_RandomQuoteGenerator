@@ -1,0 +1,355 @@
+/* ==========================================================================
+   Random Quote Generator - CSS Stylesheet
+   CodeAlpha App Development Internship Project
+   ========================================================================== */
+
+/* --- CSS Variables & Theme --- */
+:root {
+  /* Color Palette */
+  --bg-gradient-start: #0f172a; /* Slate 900 */
+  --bg-gradient-mid: #1e1b4b;   /* Indigo 950 */
+  --bg-gradient-end: #0f172a;   /* Slate 900 */
+  
+  --card-bg: rgba(30, 41, 59, 0.85); /* Slate 800 with glass effect */
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.55), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+
+  --text-primary: #f8fafc;   /* Slate 50 */
+  --text-secondary: #94a3b8; /* Slate 400 */
+  --text-quote: #e2e8f0;     /* Slate 200 */
+  --text-author: #a5b4fc;    /* Indigo 300 */
+  --accent-icon: #6366f1;    /* Indigo 500 */
+
+  /* Button Colors */
+  --btn-primary-bg: #4f46e5;      /* Indigo 600 */
+  --btn-primary-hover: #4338ca;   /* Indigo 700 */
+  --btn-primary-text: #ffffff;
+  --btn-secondary-bg: rgba(255, 255, 255, 0.07);
+  --btn-secondary-hover: rgba(255, 255, 255, 0.13);
+  --btn-secondary-border: rgba(255, 255, 255, 0.15);
+  --btn-secondary-text: #e2e8f0;
+
+  /* Status Colors */
+  --btn-copied-bg: #059669;       /* Emerald 600 */
+  --btn-copied-border: #10b981;   /* Emerald 500 */
+  --btn-copied-text: #ffffff;
+
+  /* Typography */
+  --font-family-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-family-quote: 'Playfair Display', Georgia, serif;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Global Reset & Box Sizing --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #0f172a 70%, #090d16 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- App Layout Wrapper --- */
+.app-wrapper {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  margin: 0 auto;
+}
+
+/* --- Header Section --- */
+.app-header {
+  text-align: center;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.app-title {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  margin-bottom: 0.35rem;
+}
+
+.app-subtitle {
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* --- Main Quote Card --- */
+.quote-container {
+  width: 100%;
+}
+
+.quote-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 2.5rem 2.25rem 2rem 2.25rem;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.quote-card:hover {
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+/* --- Quote Icon --- */
+.quote-icon {
+  display: inline-flex;
+  color: var(--accent-icon);
+  opacity: 0.85;
+  margin-bottom: 1.25rem;
+  transition: transform var(--transition-fast);
+}
+
+/* --- Quote Content Area --- */
+.quote-content {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 2rem;
+  transition: opacity 0.22s ease-in-out, transform 0.22s ease-in-out;
+}
+
+/* State for smooth transition */
+.quote-content.fade-out {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.quote-content.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quote-text-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.quote-text {
+  font-family: var(--font-family-quote);
+  font-size: clamp(1.2rem, 3vw, 1.45rem);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-quote);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  word-break: break-word;
+}
+
+.author-wrapper {
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+.author-dash {
+  color: var(--text-author);
+  font-weight: 600;
+}
+
+.quote-author {
+  font-family: var(--font-family-body);
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  font-weight: 600;
+  color: var(--text-author);
+  font-style: normal;
+  letter-spacing: 0.02em;
+}
+
+/* --- Action Buttons --- */
+.quote-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-family-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.75rem 1.35rem;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  outline: none;
+  transition: all var(--transition-fast);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--text-author);
+  outline-offset: 3px;
+}
+
+/* Secondary Button (Copy Quote) */
+.btn-secondary {
+  background: var(--btn-secondary-bg);
+  border-color: var(--btn-secondary-border);
+  color: var(--btn-secondary-text);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--btn-secondary-hover);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Copied Success State */
+.btn-secondary.copied {
+  background: var(--btn-copied-bg);
+  border-color: var(--btn-copied-border);
+  color: var(--btn-copied-text);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+}
+
+/* Primary Button (New Quote) */
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--btn-primary-hover);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast);
+}
+
+.btn-primary:hover .btn-icon {
+  transform: rotate(30deg);
+}
+
+/* --- Footer Section --- */
+.app-footer {
+  text-align: center;
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+/* --- Keyframe Animations --- */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 640px) {
+  body {
+    padding: 1.5rem 1rem;
+  }
+
+  .app-wrapper {
+    gap: 1.25rem;
+    margin: auto 0;
+  }
+
+  .quote-card {
+    padding: 1.75rem 1.25rem 1.25rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .quote-content {
+    min-height: 140px;
+    margin-bottom: 1.25rem;
+  }
+
+  .quote-actions {
+    flex-direction: column-reverse;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.85rem 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  body {
+    padding: 1rem 0.75rem;
+  }
+
+  .app-title {
+    font-size: 1.35rem;
+  }
+  
+  .quote-text {
+    font-size: 1.1rem;
+  }
+
+  .quote-card {
+    padding: 1.5rem 1rem 1rem 1rem;
+  }
+}
