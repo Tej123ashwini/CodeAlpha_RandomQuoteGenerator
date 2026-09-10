@@ -40,9 +40,7 @@ random-quote-generator/
 ## 🛠️ How to Run the Project
 
 ### Option 1: Direct File Open (Easiest)
-1. Navigate to the project directory:
-   `c:\Users\tejas\OneDrive\Desktop\Tejashwini\CodeAlpha\randomquote\`
-2. Double-click **`index.html`** (or right-click and select **Open with** -> **Google Chrome** / **Microsoft Edge** / any modern browser).
+1. Go to inside the project directory and you can see the "index.html" Double-click **`index.html`** (or right-click and select **Open with** -> **Google Chrome** / **Microsoft Edge** / any modern browser).
 
 ### Option 2: Using VS Code Live Server
 1. Open the project folder in **Visual Studio Code**.
@@ -66,6 +64,9 @@ Then visit `http://localhost:8000` in your web browser.
 5. **Console Check**: Confirmed 0 errors, warnings, or broken resources in the browser developer tools console.
 
 ---
+
+## Project Demo:
+    https://www.linkedin.com/in/tejashwini-devanthegowda-aba9a6250
 
 ## 📄 License & Credits
 
